@@ -43,7 +43,7 @@ EMBEDDING_COLUMN = "embedding"
 TOP_K = 5
 
 data_store_region = os.getenv("DATA_STORE_REGION", "us")
-data_store_id = os.getenv("DATA_STORE_ID", "mld-iris-datastore")
+data_store_id = os.getenv("DATA_STORE_ID", "mlb-iris-datastore")
 
 retriever = get_retriever(
     project_id=project_id,

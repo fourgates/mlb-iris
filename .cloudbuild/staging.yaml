@@ -104,7 +104,7 @@ steps:
       - "builds"
       - "triggers"
       - "run"
-      - "deploy-mld-iris"
+      - "deploy-mlb-iris"
       - "--region"
       - "$LOCATION"
       - "--project"
@@ -127,7 +127,7 @@ substitutions:
   _STAGING_PROJECT_ID: YOUR_STAGING_PROJECT_ID
   _REGION: us-east4
 
-logsBucket: gs://${PROJECT_ID}-mld-iris-logs-data/build-logs
+logsBucket: gs://${PROJECT_ID}-mlb-iris-logs-data/build-logs
 options:
   substitutionOption: ALLOW_LOOSE
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET

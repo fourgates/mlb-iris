@@ -1,7 +1,7 @@
 # Install dependencies using uv package manager
 install:
 	@command -v uv >/dev/null 2>&1 || { echo "uv is not installed. Installing uv..."; curl -LsSf https://astral.sh/uv/0.6.12/install.sh | sh; source $HOME/.local/bin/env; }
-	uv sync --dev
+	uv sync --dev --extra streamlit
 # Launch local dev playground
 playground:
 	@echo "==============================================================================="
@@ -12,6 +12,15 @@ playground:
 	@echo "| 🔍 IMPORTANT: Select the 'app' folder to interact with your agent.          |"
 	@echo "==============================================================================="
 	uv run adk web . --port 8501 --reload_agents
+
+# Launch Streamlit frontend playground
+streamlit-playground:
+	@echo "==============================================================================="
+	@echo "| 🚀 Starting your Streamlit agent playground...                             |"
+	@echo "|                                                                             |"
+	@echo "| 💡 Try asking: What information do you have about MLB rules?               |"
+	@echo "==============================================================================="
+	PYTHONPATH=. uv run streamlit run frontend/streamlit_app.py --browser.serverAddress=localhost --server.enableCORS=false --server.enableXsrfProtection=false
 
 # Deploy the agent remotely
 backend:
@@ -30,10 +39,10 @@ data-ingestion:
 	(cd data_ingestion && uv run data_ingestion_pipeline/submit_pipeline.py \
 		--project-id=$$PROJECT_ID \
 		--region="us-east4" \
-		--data-store-id="mld-iris-datastore" \
+		--data-store-id="mlb-iris-datastore" \
 		--data-store-region="us" \
-		--service-account="mld-iris-rag@$$PROJECT_ID.iam.gserviceaccount.com" \
-		--pipeline-root="gs://$$PROJECT_ID-mld-iris-rag" \
+		--service-account="mlb-iris-rag@$$PROJECT_ID.iam.gserviceaccount.com" \
+		--pipeline-root="gs://$$PROJECT_ID-mlb-iris-rag" \
 		--pipeline-name="data-ingestion-pipeline")
 
 # Run unit and integration tests

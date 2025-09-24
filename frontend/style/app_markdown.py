@@ -11,21 +11,27 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from typing import (
-    Literal,
-)
 
-from pydantic import (
-    BaseModel,
-)
-
-
-class Feedback(BaseModel):
-    """Represents feedback for a conversation."""
-
-    score: int | float
-    text: str | None = ""
-    invocation_id: str
-    log_type: Literal["feedback"] = "feedback"
-    service_name: Literal["mlb-iris"] = "mlb-iris"
-    user_id: str = ""
+MARKDOWN_STR = """
+<style>
+button[kind="primary"] {
+    background: none!important;
+    border: 0;
+    padding: 20!important;
+    color: grey !important;
+    text-decoration: none;
+    cursor: pointer;
+    border: none !important;
+    # float: right;
+}
+button[kind="primary"]:hover {
+    text-decoration: none;
+    color: white !important;
+}
+button[kind="primary"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    color:  !important;
+}
+</style>
+"""

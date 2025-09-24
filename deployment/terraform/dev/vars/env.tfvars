@@ -1,5 +1,5 @@
 # Project name used for resource naming
-project_name = "mld-iris"
+project_name = "mlb-iris"
 
 # Your Dev Google Cloud project id
 dev_project_id = "your-dev-project-id"

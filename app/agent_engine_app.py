@@ -79,7 +79,7 @@ def deploy_agent_engine_app(
     """Deploy the agent engine app to Vertex AI."""
     logging.basicConfig(level=logging.INFO)
     staging_bucket_uri = f"gs://{project}-agent-engine"
-    artifacts_bucket_name = f"{project}-mld-iris-logs-data"
+    artifacts_bucket_name = f"{project}-mlb-iris-logs-data"
     create_bucket_if_not_exists(
         bucket_name=artifacts_bucket_name, project=project, location=location
     )
@@ -174,7 +174,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--agent-name",
-        default="mld-iris",
+        default="mlb-iris",
         help="Name for the agent engine",
     )
     parser.add_argument(
